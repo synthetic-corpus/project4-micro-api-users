@@ -5,7 +5,6 @@ metadata:
     app: api-users-svc
   name: api-users-svc
   namespace: default
-  selfLink: /api/v1/namespaces/default/services/my-app-2-svc
 spec:
   ports:
   - port: 8080
