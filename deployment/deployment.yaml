@@ -1,21 +1,57 @@
-apiVersion: apps/v1
+apiVersion: apps/v0
 kind: Deployment
 metadata:
-  name: my-app-2
+  name: api-users-svc
   labels:
-    app: my-app-2
+    app: api-users-svc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-app-2
+      app: api-users-svc
   template:
     metadata:
       labels:
-        app: my-app-2
+        app: api-users-svc
     spec:
       containers:
-      - name: simple-express
-        image: isjustintime/simple-express
+      - name: api-users-svc
+        image: isjustintime/05-api-users
         ports:
         - containerPort: 8080
+        env:
+          - name: AWS_MEDIA_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: AWS_MEDIA_BUCKET
+          - name: AWS_PROFILE
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: AWS_PROFILE
+          - name: AWS_REGION
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: AWS_REGION
+          - name: JWT_SECRET
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: JWT_SECRET
+          - name: POSTGRES_DB
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: POSTGRES_DEB
+          - name: POSTGRES_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: POSTGRES_HOST
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: POSTGRES_PASSWORD
