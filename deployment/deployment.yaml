@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api-users-svc
-        image: isjustintime/05-api-users
+        image: gonzaga626/05-api-users
         ports:
         - containerPort: 8080
         env:
