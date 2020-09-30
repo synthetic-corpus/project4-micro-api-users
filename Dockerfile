@@ -10,6 +10,7 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm run build
 
 # Copy app source
 COPY . .
@@ -17,5 +18,7 @@ COPY . .
 # Bind the port that the image will run on
 EXPOSE 8080
 
+# navigate to www
+WORKDIR /usr/src/app/www
 # Define the Docker image's behavior at runtime
 CMD ["node", "server.js"]
