@@ -44,3 +44,6 @@ venv/
 
 # Deployment config file
 deployment/env-configmap.yaml
+
+# The Web facing folder
+www
