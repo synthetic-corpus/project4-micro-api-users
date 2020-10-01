@@ -2,9 +2,8 @@
 FROM node:13
 
 # Create app directory
-WORKDIR /usr/
-CMD PWD
-CMD LS -l
+WORKDIR /usr/app
+
 
 # Install app dependencies by copying
 # package.json and package-lock.json
@@ -12,11 +11,12 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
-RUN npm run build
+
 
 # Copy app source
 COPY . .
 
+RUN npm run build
 # Bind the port that the image will run on
 EXPOSE 8080
 
