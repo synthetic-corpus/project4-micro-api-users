@@ -32,7 +32,12 @@ import {V0_USER_MODELS} from './controllers/v0/model.index';
 
   // Root URI call
   app.get( '/', async ( req, res ) => {
-    res.send( 'Check /healthy for details.' );
+    res.send( 'Check /health for details.' );
+  } );
+
+  // Docker Health Check
+  app.get( '/health', async ( req, res ) => {
+    res.status(200).send('API users is up');
   } );
 
 
