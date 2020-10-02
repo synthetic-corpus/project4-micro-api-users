@@ -19,6 +19,12 @@ spec:
         image: gonzaga626/05-api-users
         ports:
         - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 5
         env:
           - name: AWS_MEDIA_BUCKET
             valueFrom:
