@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import {sequelize} from './sequelize';
 
-import {IndexRouter} from './controllers/v0/index.router';
+import {UserRouter} from './controllers/v0/users/routes/user.router';
 
 import bodyParser from 'body-parser';
 import {config} from './config/config';
@@ -28,17 +28,7 @@ import {V0_USER_MODELS} from './controllers/v0/model.index';
     origin: config.url,
   }));
 
-  app.use('/', IndexRouter);
-
-  // Root URI call
-  app.get( '/', async ( req, res ) => {
-    res.send( 'Check /health for details.' );
-  } );
-
-  // Docker Health Check
-  app.get( '/health', async ( req, res ) => {
-    res.status(200).send('API users is up');
-  } );
+  app.use('/', UserRouter);
 
 
   // Start the Server

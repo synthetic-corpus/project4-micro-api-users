@@ -9,6 +9,11 @@ router.use('/auth', AuthRouter);
 
 router.get('/');
 
+// Docker Health Check
+router.get( '/health', async ( req, res ) => {
+  res.status(200).send('API users is up');
+} );
+
 router.get('/:id', async (req: Request, res: Response) => {
   const {id} = req.params;
   const item = await User.findByPk(id);
